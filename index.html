@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f3eee8">
+  <title>Atlas — Country Information</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-glow glow-one"></div>
+  <div class="page-glow glow-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Atlas home">
+      <span class="brand-mark">A</span>
+      <span>atlas<span class="brand-dot">.</span></span>
+    </a>
+   
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+      <span id="themeIcon">☾</span>
+    </button>
+  </header>
+
+  <main class="main-wrap">
+   
+    <section class="search-panel clay-card">
+      <div class="search-heading">
+        <div>
+          <p class="section-kicker">START EXPLORING</p>
+          <h2>Find a country</h2>
+        </div>
+        <span class="globe-icon" aria-hidden="true">◎</span>
+      </div>
+      <form id="searchForm" class="search-form">
+        <div class="search-box">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="countryInput" type="search" placeholder="Try Japan, India, Brazil..." autocomplete="off" aria-label="Search for a country">
+          <button class="clear-btn" id="clearBtn" type="button" aria-label="Clear search">×</button>
+        </div>
+        <button class="search-btn" type="submit">Explore <span>↗</span></button>
+      </form>
+      <div class="search-bottom">
+        <span>POPULAR SEARCHES</span>
+        <div class="quick-searches">
+          <button type="button" data-country="Japan">Japan</button>
+          <button type="button" data-country="India">India</button>
+          <button type="button" data-country="Italy">Italy</button>
+          <button type="button" data-country="Canada">Canada</button>
+        </div>
+      </div>
+      <p class="error-message" id="errorMessage" role="status"></p>
+    </section>
+
+    <section class="result-section" id="resultSection" aria-live="polite">
+      <div class="section-title-row">
+        <div>
+          <h2>Here's what we found</h2>
+        </div>
+        <span class="result-label" id="resultLabel">READY TO EXPLORE</span>
+      </div>
+
+      <div class="country-card clay-card" id="countryCard">
+        <div class="country-top">
+          <div class="flag-wrap" id="flagWrap">
+            <div class="flag-placeholder">🌍</div>
+          </div>
+          <div class="country-title">
+            <p class="country-code" id="countryCode">YOUR NEXT DESTINATION</p>
+            <h3 id="countryName">The world is waiting.</h3>
+            <p id="countryOfficial" class="official-name">Search for a country to see its details.</p>
+          </div>
+          <button class="save-btn" id="saveBtn" type="button" title="Save country" aria-label="Save country" disabled>♡</button>
+        </div>
+
+        <div class="country-details">
+          <div class="detail-tile">
+            <span class="detail-icon">⌖</span>
+            <span class="detail-label">Capital</span>
+            <strong id="capital">—</strong>
+          </div>
+          <div class="detail-tile">
+            <span class="detail-icon">♙</span>
+            <span class="detail-label">Population</span>
+            <strong id="population">—</strong>
+          </div>
+          <div class="detail-tile">
+            <span class="detail-icon">✧</span>
+            <span class="detail-label">Region</span>
+            <strong id="region">—</strong>
+          </div>
+          <div class="detail-tile">
+            <span class="detail-icon">◈</span>
+            <span class="detail-label">Currency</span>
+            <strong id="currency">—</strong>
+          </div>
+        </div>
+
+        <div class="extra-details">
+          <div><span>Subregion</span><strong id="subregion">—</strong></div>
+          <div><span>Languages</span><strong id="languages">—</strong></div>
+          <div><span>Area</span><strong id="area">—</strong></div>
+          <div><span>Time zones</span><strong id="timezones">—</strong></div>
+        </div>
+        <div class="country-footer">
+          <span id="countryHint">Your country details will appear here.</span>
+          <a id="mapLink" href="#" target="_blank" rel="noopener noreferrer" class="map-link" aria-disabled="true">View on map ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="saved-section">
+      <div class="section-title-row saved-title-row">
+        <div>
+          <p class="section-kicker">YOUR COLLECTION</p>
+          <h2>Saved places <span class="saved-count" id="savedCount">0</span></h2>
+        </div>
+        <button class="text-button" id="clearSavedBtn" type="button">Clear all</button>
+      </div>
+      <div class="saved-list" id="savedList">
+        <div class="empty-saved"><span>♡</span><p>No saved countries yet. Tap the heart when you find one you like.</p></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Country data from REST Countries</span>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
