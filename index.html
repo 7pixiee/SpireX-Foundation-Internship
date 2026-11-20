@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="#"><span class="brand-icon">☼</span> WeatherApp</a>
+    </header>
+
+    <section class="intro">
+      <h1>How's the sky <em>looking?</em></h1>
+      <p class="subtitle">Find a sunshine, wherever you are.</p>
+    </section>
+
+    <form class="search" id="searchForm">
+      <span class="search-icon">⌕</span>
+      <input id="cityInput" type="text" placeholder="Search for a city..." autocomplete="off" aria-label="City name">
+      <button type="submit">Find weather <span>→</span></button>
+    </form>
+    <p class="message" id="message" aria-live="polite"> </p>
+
+    <section class="weather-layout" id="weatherContent">
+      <article class="current-card">
+        <div class="card-top">
+          <div>
+            <p class="card-label">CURRENT WEATHER</p>
+            <h2 id="cityName">Varanasi</h2>
+            <p class="date" id="todayDate">Loading date...</p>
+          </div>
+          <span class="location-pin">⌖</span>
+        </div>
+        <div class="current-main">
+          <div class="weather-art" id="weatherIcon">☀️</div>
+          <div>
+            <div class="temperature"><span id="temperature">--</span><sup>°C</sup></div>
+            <p class="condition" id="condition">Getting the sky's mood...</p>
+          </div>
+        </div>
+        <div class="high-low">
+          <span>Feels like <strong id="feelsLike">--°</strong></span>
+          <span class="tiny-divider"></span>
+          <span>Today's range <strong id="highLow">--° / --°</strong></span>
+        </div>
+      </article>
+
+      <article class="details-card">
+        <div class="section-heading">
+          <div><p class="card-label">THE DETAILS</p><h3>Weather details</h3></div>
+          <span class="sparkle">✧</span>
+        </div>
+        <div class="details-grid">
+          <div class="detail-item">
+            <span class="detail-icon pink">♧</span>
+            <div><p>Humidity</p><strong id="humidity">--%</strong></div>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon lilac">↝</span>
+            <div><p>Wind speed</p><strong id="wind">-- km/h</strong></div>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon peach">◉</span>
+            <div><p>Feels like</p><strong id="detailFeels">--°C</strong></div>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon mint">☼</span>
+            <div><p>UV index</p><strong id="uv">--</strong></div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="forecast-section">
+      <div class="section-heading forecast-heading">
+        <div><p class="card-label">COMING UP</p><h3>Next 5 days</h3></div>
+      </div>
+      <div class="forecast-list" id="forecastList">
+        <div class="forecast-placeholder">Your forecast will show up here.</div>
+      </div>
+    </section>
+
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
