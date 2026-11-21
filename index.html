@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A clean, responsive shopping experience with a dynamic cart."
+    />
+    <title>FORME — Everyday essentials</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="announcement">Complimentary shipping on orders over ₹2,500</div>
+    <header class="site-header">
+      <a class="wordmark" href="#" aria-label="Forme home"
+        >FORME<span>.</span></a
+      >
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#shop">Shop</a>
+        <a href="#shop" data-category-link="Accessories">Accessories</a>
+        <a href="#shop" data-category-link="Lifestyle">Lifestyle</a>
+      </nav>
+      <div class="header-actions">
+        <button
+          class="icon-button theme-toggle"
+          id="themeToggle"
+          aria-label="Switch color theme"
+          title="Switch theme"
+        >
+          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"
+            />
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.6 8.6 0 1 0 20.2 15.2Z"
+            />
+          </svg>
+        </button>
+        <a class="cart-link" href="#cart" aria-label="View shopping cart">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 1.9-1.4L22 8H6"
+            />
+            <circle cx="10" cy="20" r="1" />
+            <circle cx="18" cy="20" r="1" />
+          </svg>
+          <span>Bag</span><span class="cart-count" id="cartCount">0</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>Considered pieces.<br /><span>Better everyday.</span></h1>
+          <p class="hero-description">
+            Useful objects, thoughtful details, and lasting design. A collection
+            made for the way you live.
+          </p>
+          <a class="text-link" href="#shop"
+            >Explore the collection <span>↗</span></a
+          >
+        </div>
+        <div class="hero-visual">
+          <img
+            src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1200&q=85"
+            alt=""
+            onerror="
+              this.src =
+                'https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1200&q=85'
+            "
+          />
+          <div class="hero-caption">
+            <span>OBJECTS FOR DAILY LIVING</span><span>01 — 04</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="shop-section" id="shop">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">THE COLLECTION</p>
+            <h2>Shop essentials</h2>
+          </div>
+          <p class="product-total" id="productTotal">06 PRODUCTS</p>
+        </div>
+        <div class="shop-toolbar">
+          <div class="filters" role="group" aria-label="Filter products">
+            <button class="filter-button active" data-filter="All">All</button>
+            <button class="filter-button" data-filter="Accessories">
+              Accessories
+            </button>
+            <button class="filter-button" data-filter="Lifestyle">
+              Lifestyle
+            </button>
+            <button class="filter-button" data-filter="Desk">Desk</button>
+          </div>
+          <label class="search-box">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="10.8" cy="10.8" r="6.8" />
+              <path d="m16 16 5 5" />
+            </svg>
+            <input
+              type="search"
+              id="productSearch"
+              placeholder="Search products"
+              aria-label="Search products"
+            />
+          </label>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+      </section>
+
+      <section class="cart-section" id="cart">
+        <div class="cart-heading">
+          <div>
+            <p class="eyebrow">YOUR SELECTION</p>
+            <h2>Your bag <span id="cartHeadingCount">(0)</span></h2>
+          </div>
+          <button class="clear-button" id="clearCart">Clear bag</button>
+        </div>
+        <div class="cart-layout">
+          <div class="cart-items" id="cartItems">
+            <div class="empty-cart">
+              <div class="empty-icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 1.9-1.4L22 8H6"
+                  />
+                  <circle cx="10" cy="20" r="1" />
+                  <circle cx="18" cy="20" r="1" />
+                </svg>
+              </div>
+              <h3>Your bag is empty</h3>
+              <p>Find something useful for your everyday.</p>
+              <a href="#shop" class="outline-button">Explore products</a>
+            </div>
+          </div>
+          <aside class="order-summary">
+            <h3>Order summary</h3>
+            <div class="summary-line">
+              <span>Subtotal</span><strong id="subtotal">₹0</strong>
+            </div>
+            <div class="summary-line">
+              <span>Shipping</span><strong id="shipping">—</strong>
+            </div>
+            <div class="summary-line total-line">
+              <span>Total</span><strong id="total">₹0</strong>
+            </div>
+            <p class="shipping-note" id="shippingNote">
+              Shipping is calculated at checkout.
+            </p>
+            <button class="checkout-button" id="checkoutButton" disabled>
+              Continue to checkout <span>→</span>
+            </button>
+            <p class="secure-note">
+              <span>✓</span> Secure checkout · Taxes included
+            </p>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="wordmark" href="#">FORME<span>.</span></a>
+      
+      <span>© 2026 FORME STUDIO</span>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
