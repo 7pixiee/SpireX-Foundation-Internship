@@ -3,7 +3,7 @@ const products = [
   { id: 2, name: "Everyday Tote", category: "Accessories", price: 1290, tag: "New", image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=900&q=85" },
   { id: 3, name: "Desk Organizer", category: "Desk", price: 1590, tag: "", image: "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=900&q=85" },
   { id: 4, name: "Minimal Wallet", category: "Accessories", price: 1190, tag: "", image: "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=900&q=85" },
-  { id: 5, name: "Ceramic Mug", category: "Lifestyle", price: 690, tag: "", image: "https://images.unsplash.com/photo-1514228742587-6b1558f905c7?auto=format&fit=crop&w=900&q=85" },
+  { id: 5, name: "Ceramic Mug", category: "Lifestyle", price: 690, tag: "", image: "https://images.unsplash.com/photo-1616241673111-508b4662c707?q=80&w=802&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" },
   { id: 6, name: "Wireless Headphones", category: "Desk", price: 2490, tag: "Popular", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=85" }
 ];
 products[5].image = "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=85";
