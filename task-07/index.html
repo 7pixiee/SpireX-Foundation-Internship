@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+
+    <section class="converter-card">
+      <div class="card-heading">
+        <div>
+          <p class="small-label">CURRENCY CONVERTER</p>
+          <h2>Make your conversion</h2>
+        </div>
+        <div class="card-icon">↗</div>
+      </div>
+
+      <div class="conversion-area">
+        <div class="currency-box">
+          <label for="amount">FROM</label>
+          <div class="currency-input">
+            <input type="number" id="amount" value="1" min="0" step="any" aria-label="Amount to convert">
+            <select id="fromCurrency" aria-label="From currency">
+              <option value="USD">USD</option><option value="INR" selected>INR</option>
+              <option value="EUR">EUR</option><option value="GBP">GBP</option>
+              <option value="AED">AED</option><option value="JPY">JPY</option>
+              <option value="CAD">CAD</option><option value="AUD">AUD</option>
+              <option value="CNY">CNY</option><option value="SAR">SAR</option>
+              <option value="SGD">SGD</option><option value="CHF">CHF</option>
+              <option value="PKR">PKR</option><option value="BDT">BDT</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="swap-wrapper">
+          <button class="swap-btn" id="swapBtn" aria-label="Swap currencies">⇅</button>
+        </div>
+
+        <div class="currency-box">
+          <label for="toCurrency">TO</label>
+          <div class="currency-input">
+            <input type="text" id="result" value="0.00" readonly aria-label="Converted amount">
+            <select id="toCurrency" aria-label="To currency">
+              <option value="USD" selected>USD</option><option value="INR">INR</option>
+              <option value="EUR">EUR</option><option value="GBP">GBP</option>
+              <option value="AED">AED</option><option value="JPY">JPY</option>
+              <option value="CAD">CAD</option><option value="AUD">AUD</option>
+              <option value="CNY">CNY</option><option value="SAR">SAR</option>
+              <option value="SGD">SGD</option><option value="CHF">CHF</option>
+              <option value="PKR">PKR</option><option value="BDT">BDT</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <button class="convert-btn" id="convertBtn">Convert currency <span>→</span></button>
+      <p class="message" id="message" role="status" aria-live="polite">Getting the latest exchange rates...</p>
+
+      <div class="result-info">
+        <div><span class="info-icon">↗</span><span id="rateInfo">Exchange rate will appear here</span></div>
+        <p id="lastUpdated">Rates are updated regularly</p>
+      </div>
+    </section>
+
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
