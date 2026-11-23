@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2b171d">
+  <title>Soft Life — Expense Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Soft Life home">
+        <span class="brand-mark">✿</span>
+        <span><strong>Soft Life</strong><small>EXPENSE TRACKER</small></span>
+      </a>
+      <span class="date-label" id="todayLabel"></span>
+    </header>
+
+    <section class="intro">
+      <h1>Your money<br><em>your way</em> <span class="heart">♡</span></h1>
+      <p class="intro-copy">Keep track of the little things and the big things.</p>
+    </section>
+
+    <section class="summary-card" aria-live="polite">
+      <div class="summary-top">
+        <div>
+          <p class="card-label">TOTAL EXPENSES</p>
+          <h2 id="totalAmount">₹0.00</h2>
+        </div>
+        <div class="summary-icon">₹</div>
+      </div>
+      <div class="summary-bottom">
+        <span><i class="status-dot"></i> All recorded expenses</span>
+        <span id="expenseCount">0 expenses</span>
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <section class="panel add-panel">
+        <div class="section-heading">
+          <div>
+            <h2>Add an expense</h2>
+          </div>
+          <span class="heading-flower">✿</span>
+        </div>
+
+        <form id="expenseForm">
+          <label for="expenseName">Expense name</label>
+          <input id="expenseName" type="text" placeholder="e.g. Coffee with a friend" maxlength="60" required>
+
+          <div class="form-row">
+            <div>
+              <label for="expenseAmount">Amount (₹)</label>
+              <input id="expenseAmount" type="number" placeholder="0.00" min="0.01" step="0.01" required>
+            </div>
+            <div>
+              <label for="expenseCategory">Category</label>
+              <select id="expenseCategory" required>
+                <option value="Food">Food</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Travel">Travel</option>
+                <option value="Bills">Bills</option>
+                <option value="Other" selected>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="expenseDate">Date</label>
+          <input id="expenseDate" type="date" required>
+
+          <button class="add-button" type="submit"><span>＋</span> Add expense</button>
+          <p class="form-note" id="formMessage" role="status"></p>
+        </form>
+      </section>
+
+      <section class="panel list-panel">
+        <div class="section-heading list-heading">
+          <div>
+            <h2>Recent expenses</h2>
+          </div>
+          <span class="list-count" id="listCount">0 items</span>
+        </div>
+        <div class="expense-list" id="expenseList">
+          <div class="empty-state">
+            <span class="empty-icon">♡</span>
+            <h3>Nothing here yet</h3>
+            <p>Add your first expense and it will show up here.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
