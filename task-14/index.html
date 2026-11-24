@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Intern Desk | Student Internship Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Work+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="top-inner">
+        <a class="logo" href="#" id="logo"
+          >Intern Desk<span>for students</span></a
+        >
+        <nav class="tabs" aria-label="Sections">
+          <button class="tab active" id="tabBrowse" data-view="browse">
+            Browse internships
+          </button>
+          <button class="tab" id="tabApps" data-view="applications">
+            My applications <b id="appCount">0</b>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="browse">
+        <div class="intro">
+          <h1>Find an internship that fits your semester</h1>
+          <p>
+            Search the openings below, read the details, and apply in a couple
+            of minutes.
+          </p>
+        </div>
+
+        <div class="filters">
+          <input
+            type="search"
+            id="search"
+            placeholder="Search by role or company"
+            aria-label="Search internships"
+          />
+          <select id="fieldFilter" aria-label="Filter by field">
+            <option value="all">All fields</option>
+          </select>
+          <select id="modeFilter" aria-label="Filter by work mode">
+            <option value="all">Any work mode</option>
+            <option>Remote</option>
+            <option>Hybrid</option>
+            <option>On-site</option>
+          </select>
+        </div>
+
+        <div class="board" id="board">
+          <div class="list-pane">
+            <p class="result-count" id="resultCount" aria-live="polite"></p>
+            <ul class="openings" id="openings"></ul>
+          </div>
+          <article class="detail-pane" id="detail" aria-live="polite"></article>
+        </div>
+      </section>
+
+      <section id="applications" hidden>
+        <div class="intro">
+          <h1>My applications</h1>
+          <p>Follow each application as it moves through the hiring stages.</p>
+        </div>
+        <ul class="app-list" id="appList"></ul>
+      </section>
+    </main>
+
+    <footer class="foot">
+      Intern Desk &middot; A student internship portal project &middot;
+      <span id="year"></span>
+    </footer>
+
+    <dialog id="applyDialog">
+      <form id="applyForm" novalidate>
+        <h2 id="dialogTitle">Apply</h2>
+        <p class="dialog-sub" id="dialogSub"></p>
+        <label
+          >Full name<input
+            type="text"
+            name="name"
+            autocomplete="name" /><small></small
+        ></label>
+        <label
+          >Email<input
+            type="email"
+            name="email"
+            autocomplete="email" /><small></small
+        ></label>
+        <label
+          >College and course<input
+            type="text"
+            name="college"
+            placeholder="e.g. Fergusson College, B.Sc. Computer Science" /><small></small
+        ></label>
+        <label
+          >Why do you want this internship?<textarea
+            name="reason"
+            rows="4"
+          ></textarea
+          ><small></small
+        ></label>
+        <div class="dialog-actions">
+          <button type="button" class="btn-plain" id="cancelApply">
+            Cancel
+          </button>
+          <button type="submit" class="btn-main">Submit application</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" hidden></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
