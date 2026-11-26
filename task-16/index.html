@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ember &amp; Fig | Wood-fired Kitchen, Pune</title>
+    <meta
+      name="description"
+      content="Ember & Fig is a wood-fired kitchen in Pune. See the menu, our services and book a table online."
+    />
+    <script>
+      // set the theme before the page paints so it doesn't flash
+      (function () {
+        var saved = null;
+        try {
+          saved = localStorage.getItem("emberTheme");
+        } catch (e) {}
+        var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute(
+          "data-theme",
+          saved || (dark ? "dark" : "light"),
+        );
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Karla:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-head" id="siteHead">
+      <div class="wrap head-row">
+        <a href="#top" class="logo">Ember <i>&amp;</i> Fig</a>
+        <nav class="nav" id="nav" aria-label="Main navigation">
+          <a href="#menu">Menu</a>
+          <a href="#services">Services</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#book">Book a table</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="head-tools">
+          <button class="icon-btn" id="plateBtn" aria-label="Open your plate">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <circle cx="12" cy="12" r="8" />
+              <circle cx="12" cy="12" r="4.5" />
+            </svg>
+            <span class="count" id="plateCount">0</span>
+          </button>
+          <button
+            class="icon-btn theme-btn"
+            id="themeBtn"
+            aria-label="Switch theme"
+          >
+            <svg
+              class="sun"
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"
+              />
+            </svg>
+            <svg
+              class="moon"
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              aria-hidden="true"
+            >
+              <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z" />
+            </svg>
+          </button>
+          <button
+            class="icon-btn burger"
+            id="burger"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="nav"
+          >
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="status" id="openStatus"></p>
+            <h1>Fire, flour and a little <em>patience</em></h1>
+            <p class="hero-text">
+              We cook over a wood fire in the middle of Koregaon Park. Bread is
+              baked every morning, sauces simmer for hours, and nothing leaves
+              the kitchen in a hurry.
+            </p>
+            <div class="hero-actions">
+              <a href="#menu" class="btn btn-main">View the menu</a>
+              <a href="#book" class="btn btn-line">Book a table</a>
+            </div>
+          </div>
+          <div class="hero-plate">
+            <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+              <defs>
+                <path
+                  id="ringPath"
+                  d="M100,100 m-82,0 a82,82 0 1,1 164,0 a82,82 0 1,1 -164,0"
+                />
+              </defs>
+              <text>
+                <textPath
+                  href="#ringPath"
+                  textLength="505"
+                  lengthAdjust="spacing"
+                >
+                  Wood-fired &#183; Slow-cooked &#183; Seasonal &#183; Made
+                  daily &#183;
+                </textPath>
+              </text>
+            </svg>
+            <img
+              src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80"
+              alt="Wood-fired pizza fresh from the oven"
+            />
+          </div>
+        </div>
+      </section>
+
+      <div class="strip" aria-hidden="true">
+        <div class="strip-track">
+          <span>Wood-fired pizza</span><span>Hand-rolled pasta</span
+          ><span>Seasonal salads</span><span>Slow-cooked mains</span
+          ><span>House desserts</span> <span>Wood-fired pizza</span
+          ><span>Hand-rolled pasta</span><span>Seasonal salads</span
+          ><span>Slow-cooked mains</span><span>House desserts</span>
+        </div>
+      </div>
+
+      <section class="section" id="menu">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <h2>The menu</h2>
+            <p>
+              Hover over a dish to see it. Press + to add it to your plate and
+              send it along with a table booking.
+            </p>
+          </div>
+          <div
+            class="menu-tabs reveal"
+            id="menuTabs"
+            role="tablist"
+            aria-label="Menu categories"
+          ></div>
+          <ul class="dishes" id="dishList"></ul>
+          <p class="menu-note">
+            &#9679; Vegetarian &nbsp; &#128293; Spicy &nbsp; Prices include GST.
+          </p>
+        </div>
+      </section>
+
+      <section class="section tint" id="services">
+        <div class="wrap split">
+          <div class="section-head reveal">
+            <h2>Ways to eat with us</h2>
+            <p>Pick what suits your day. Open a row for details.</p>
+          </div>
+          <div class="accordion reveal" id="accordion">
+            <div class="acc-item open">
+              <button class="acc-btn" aria-expanded="true">
+                <span>Dine-in</span><b aria-hidden="true">+</b>
+              </button>
+              <div class="acc-panel">
+                <p>
+                  Sixty seats across the main hall, the courtyard and the chef's
+                  counter. Walk-ins are welcome, but booking ahead guarantees
+                  your table, especially on weekends.
+                </p>
+              </div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" aria-expanded="false">
+                <span>Takeaway and delivery</span><b aria-hidden="true">+</b>
+              </button>
+              <div class="acc-panel">
+                <p>
+                  Order by phone or collect in person. Our pizzas travel in
+                  vented boxes so the crust stays crisp. We deliver within 6 km
+                  of Koregaon Park from 12 pm to 10 pm.
+                </p>
+              </div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" aria-expanded="false">
+                <span>Private dining</span><b aria-hidden="true">+</b>
+              </button>
+              <div class="acc-panel">
+                <p>
+                  The upstairs room seats up to 24 for birthdays, farewells and
+                  small family dinners. We plan a set menu with you and you get
+                  a dedicated server for the evening.
+                </p>
+              </div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" aria-expanded="false">
+                <span>Catering</span><b aria-hidden="true">+</b>
+              </button>
+              <div class="acc-panel">
+                <p>
+                  We cater office lunches and house parties for 15 to 150
+                  guests. Ask for a tasting at the restaurant before you decide.
+                  Please give us at least three days' notice.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <h2>From our kitchen and tables</h2>
+            <p>Tap a photo to see it larger.</p>
+          </div>
+          <div class="gallery">
+            <button
+              class="g-item g1 reveal"
+              data-caption="The main dining hall at dinner"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80"
+                alt="Dining hall with warm lights"
+                loading="lazy"
+              />
+            </button>
+            <button
+              class="g-item g2 reveal"
+              data-caption="Hand-rolled pasta with a slow tomato sauce"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=700&q=80"
+                alt="Plate of pasta"
+                loading="lazy"
+              />
+            </button>
+            <button
+              class="g-item g3 reveal"
+              data-caption="Our burger, with a house-baked bun"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=700&q=80"
+                alt="Burger and fries"
+                loading="lazy"
+              />
+            </button>
+            <button
+              class="g-item g4 reveal"
+              data-caption="Grilled salmon with seasonal vegetables"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=700&q=80"
+                alt="Salmon fillet on a plate"
+                loading="lazy"
+              />
+            </button>
+            <button
+              class="g-item g5 reveal"
+              data-caption="Tables set for the evening"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=900&q=80"
+                alt="Restaurant tables laid for dinner"
+                loading="lazy"
+              />
+            </button>
+            <button
+              class="g-item g6 reveal"
+              data-caption="Salad bowl from the daily specials"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=700&q=80"
+                alt="Fresh salad bowl"
+                loading="lazy"
+              />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tint" id="book">
+        <div class="wrap split">
+          <div class="section-head reveal">
+            <h2>Book a table</h2>
+            <p>
+              Choose a date, a time and the size of your group. We hold tables
+              for 15 minutes after the booking time.
+            </p>
+            <p class="preorder" id="preorderNote" hidden></p>
+          </div>
+          <div class="book-box reveal">
+            <form id="bookForm" novalidate>
+              <div class="row">
+                <label class="field"
+                  >Date
+                  <input type="date" id="bookDate" name="date" />
+                  <small></small>
+                </label>
+                <div class="field">
+                  Guests
+                  <div class="stepper">
+                    <button
+                      type="button"
+                      id="guestsDown"
+                      aria-label="One fewer guest"
+                    >
+                      &minus;
+                    </button>
+                    <output id="guestsOut" aria-live="polite">2</output>
+                    <button
+                      type="button"
+                      id="guestsUp"
+                      aria-label="One more guest"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                Time
+                <div
+                  class="slots"
+                  id="slots"
+                  role="group"
+                  aria-label="Available times"
+                ></div>
+                <small id="slotError"></small>
+              </div>
+              <div class="row">
+                <label class="field"
+                  >Name<input
+                    type="text"
+                    name="name"
+                    autocomplete="name" /><small></small
+                ></label>
+                <label class="field"
+                  >Phone<input
+                    type="tel"
+                    name="phone"
+                    autocomplete="tel"
+                    placeholder="10-digit mobile number" /><small></small
+                ></label>
+              </div>
+              <label class="field"
+                >Email<input
+                  type="email"
+                  name="email"
+                  autocomplete="email" /><small></small
+              ></label>
+              <label class="field"
+                >Anything we should know?<textarea
+                  name="notes"
+                  rows="2"
+                  placeholder="Allergies, a birthday, a high chair..."
+                ></textarea>
+              </label>
+              <button type="submit" class="btn btn-main">
+                Confirm booking
+              </button>
+            </form>
+            <div class="confirm" id="confirm" hidden></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="wrap split">
+          <div class="reveal">
+            <h2>Find us</h2>
+            <address>
+              Ember &amp; Fig<br />
+              14, Lane 6, Koregaon Park<br />
+              Pune, Maharashtra 411001
+            </address>
+            <p>
+              <a href="tel:+912040005678">+91 20 4000 5678</a><br /><a
+                href="mailto:hello@emberandfig.in"
+                >hello@emberandfig.in</a
+              >
+            </p>
+            <h3>Opening hours</h3>
+            <table class="hours" id="hoursTable"></table>
+          </div>
+          <iframe
+            class="map reveal"
+            title="Map showing Ember and Fig in Koregaon Park, Pune"
+            loading="lazy"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=73.88%2C18.52%2C73.92%2C18.55&amp;layer=mapnik"
+          ></iframe>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-foot">
+      <div class="wrap foot-row">
+        <a href="#top" class="logo">Ember <i>&amp;</i> Fig</a>
+        <p>
+          &copy; <span id="year"></span> Ember &amp; Fig. A wood-fired kitchen
+          in Pune.
+        </p>
+        <ul class="social">
+          <li>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener"
+              >Instagram</a
+            >
+          </li>
+          <li>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener"
+              >Facebook</a
+            >
+          </li>
+          <li>
+            <a href="https://www.google.com/maps" target="_blank" rel="noopener"
+              >Google Maps</a
+            >
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <div class="dish-preview" id="preview"><img alt="" /></div>
+
+    <div class="overlay" id="overlay"></div>
+    <aside
+      class="plate-panel"
+      id="platePanel"
+      aria-hidden="true"
+      aria-label="Your plate"
+    >
+      <div class="panel-head">
+        <h2>Your plate</h2>
+        <button class="icon-btn" id="plateClose" aria-label="Close">
+          &times;
+        </button>
+      </div>
+      <ul class="plate-items" id="plateItems"></ul>
+      <div class="plate-foot">
+        <p class="plate-total">Total <b id="plateTotal">&#8377;0</b></p>
+        <button class="btn btn-main" id="plateBook">Continue to booking</button>
+      </div>
+    </aside>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+      <button class="lb-arrow prev" id="lbPrev" aria-label="Previous photo">
+        &#8249;
+      </button>
+      <figure>
+        <img id="lbImage" alt="" />
+        <figcaption id="lbCaption"></figcaption>
+      </figure>
+      <button class="lb-arrow next" id="lbNext" aria-label="Next photo">
+        &#8250;
+      </button>
+    </div>
+
+    <div class="toast" id="toast" role="status"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
